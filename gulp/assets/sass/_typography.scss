@@ -1,0 +1,136 @@
+
+// See qtsettings.scss for includes
+
+h1 {
+  @include header1;
+}
+
+h1.qt-hdr-underline {
+  position: relative;
+  padding: 0 0 10px 0;
+  .qt-underline {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $primary-color;
+  }
+}
+
+body {
+  line-height: normal;
+}
+
+body, p, label, li, h2, h3, h4, h5, h6 {
+  @include body-font;
+}
+
+ul, li {
+  margin: 0;
+}
+
+ul.button-group {
+  padding: 0;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #222;
+}
+
+h2 {
+  @include header2;
+}
+
+h3 {
+  @include header3;
+}
+
+h4 {
+  @include header4;
+}
+
+a {
+  @include link-base;
+}
+
+p a {
+  text-decoration: underline;
+}
+
+// Red links, arrow bullets
+.go-there {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
+    margin: 0;
+    padding: 0 0 0 $space-small;
+    display: inline-block;
+    font-size: 0.875rem; // 14px 
+    &:first-child {
+      padding-left: 0;
+    }
+    a {
+      color: $mid-dark;
+    }
+    // &:before {
+    //   content: "";
+    //   position: absolute;
+    //   left: 0;
+    // }
+  }
+}
+
+label {
+  @include form-label;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.vertical-middle {
+  @include vertical-middle;
+}
+
+.qt-small-txt {
+    @include small-text;
+}
+
+.qt-tiny-txt {
+    @include tiny-text;
+}
+
+.price-lockup {
+  @include price-lockup;
+}
+
+.qt-label {
+  @include qt-label;
+}
+
+.qt-list-offers, .qt-list-lowest {
+  .qt-card {
+    h4 {
+        font-weight: bold;
+        font-size: 1rem;
+        margin: 0 0 $space-tiny 0;
+    }
+    h5 {
+        //color: $body-font-color;
+    }
+    p {
+      font-size: 0.875rem; // 14px
+    }
+  }
+}

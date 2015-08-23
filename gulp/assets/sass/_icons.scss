@@ -1,0 +1,199 @@
+$icon-size: 32px;
+@font-face {
+	font-family: "qt-icons";
+	src: url('../font/icons/qt-icons.eot');
+	src: url('../font/icons/qt-icons.eot?#iefix') format('eot'),
+		url('../font/icons/qt-icons.woff') format('woff'),
+		url('../font/icons/qt-icons.ttf') format('truetype'),
+		url('../font/icons/qt-icons.svg#qt-icons') format('svg');
+}
+
+@mixin iconbase {
+	font-family: "qt-icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+	font-size:32px;
+	line-height:1em;
+	display:inline-block;
+	color: $mid-dark;
+}
+
+.qt-ico {
+
+	@include iconbase;
+	&.qt-ico-tiny {font-size:$icon-size*0.25;}
+	&.qt-ico-xs {font-size:$icon-size*0.5;}
+	&.qt-ico-s {font-size:$icon-size*0.75;}
+	&.qt-ico-m {font-size:$icon-size;}
+	&.qt-ico-l {font-size:$icon-size*1.5;}
+	&.qt-ico-xl {font-size:$icon-size*2;}
+	&.qt-ico-xxl {font-size:$icon-size*3;}
+}
+
+%icon {
+
+}
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == calendar {
+		$char: "\E001";
+	}
+	@if $filename == chevron-down {
+		$char: "\E002";
+	}
+	@if $filename == chevron-left {
+		$char: "\E003";
+	}
+	@if $filename == chevron-right {
+		$char: "\E004";
+	}
+	@if $filename == chevron-up {
+		$char: "\E005";
+	}
+	@if $filename == cross {
+		$char: "\E006";
+	}
+	@if $filename == hamburger {
+		$char: "\E007";
+	}
+	@if $filename == key {
+		$char: "\E008";
+	}
+	@if $filename == luggage {
+		$char: "\E009";
+	}
+	@if $filename == minus {
+		$char: "\E00A";
+	}
+	@if $filename == plane {
+		$char: "\E00B";
+	}
+	@if $filename == plus {
+		$char: "\E00C";
+	}
+	@if $filename == tick {
+		$char: "\E00D";
+	}
+	@if $filename == user {
+		$char: "\E00E";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before) {
+	&:#{$insert} {
+		@extend %icon;
+		content: icon-char($filename);
+	}
+}
+
+
+	@mixin icon-calendar{
+		content: icon-char(calendar);
+	}
+
+	@mixin icon-chevron-down{
+		content: icon-char(chevron-down);
+	}
+
+	@mixin icon-chevron-left{
+		content: icon-char(chevron-left);
+	}
+
+	@mixin icon-chevron-right{
+		content: icon-char(chevron-right);
+	}
+
+	@mixin icon-chevron-up{
+		content: icon-char(chevron-up);
+	}
+
+	@mixin icon-cross{
+		content: icon-char(cross);
+	}
+
+	@mixin icon-hamburger{
+		content: icon-char(hamburger);
+	}
+
+	@mixin icon-key{
+		content: icon-char(key);
+	}
+
+	@mixin icon-luggage{
+		content: icon-char(luggage);
+	}
+
+	@mixin icon-minus{
+		content: icon-char(minus);
+	}
+
+	@mixin icon-plane{
+		content: icon-char(plane);
+	}
+
+	@mixin icon-plus{
+		content: icon-char(plus);
+	}
+
+	@mixin icon-tick{
+		content: icon-char(tick);
+	}
+
+	@mixin icon-user{
+		content: icon-char(user);
+	}
+
+
+
+.qt-ico-calendar {
+	@include icon(calendar);
+}
+.qt-ico-chevron-down {
+	@include icon(chevron-down);
+}
+.qt-ico-chevron-left {
+	@include icon(chevron-left);
+}
+.qt-ico-chevron-right {
+	@include icon(chevron-right);
+}
+.qt-ico-chevron-up {
+	@include icon(chevron-up);
+}
+.qt-ico-cross {
+	@include icon(cross);
+}
+.qt-ico-hamburger {
+	@include icon(hamburger);
+}
+.qt-ico-key {
+	@include icon(key);
+}
+.qt-ico-luggage {
+	@include icon(luggage);
+}
+.qt-ico-minus {
+	@include icon(minus);
+}
+.qt-ico-plane {
+	@include icon(plane);
+}
+.qt-ico-plus {
+	@include icon(plus);
+}
+.qt-ico-tick {
+	@include icon(tick);
+}
+.qt-ico-user {
+	@include icon(user);
+}

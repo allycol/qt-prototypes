@@ -1,0 +1,223 @@
+// Allow content to scroll whilst off-canvas is closed
+.scotch-panel-wrapper {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Disable the content scroll when off-canvas is open
+.scotch-opened .scotch-panel-wrapper {
+  overflow-y: hidden !important;
+}
+
+// Tranform breaks position: fixed for nested elements
+// so turn it on only when we need it :-)
+.scotch-panel-canvas {
+  transform: none !important;
+  &.scotch-is-showing {
+    transform: translate3d(87%, 0px, 0px) !important;
+  }
+}
+
+/* Forces use of GPU */
+.scotchified {
+    -o-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+// Allow off-canvas to scroll up and down
+#scotch-panel {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  a, .title {
+    display: block;
+    padding: $space-small;
+  }
+  .title {
+    font-weight: bold;
+    color: $dark;
+  }
+}
+.scotch-panel-wrapper {
+    height: 100%;
+}
+
+.overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 999999;
+  -webkit-transition: all 225ms ease;
+  -moz-transition: all 225ms ease;
+  transition: all 225ms ease;
+
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+
+  cursor: pointer;
+}
+.scotch-is-showing .overlay {
+  display: block;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// SUB LEVEL - CUSTOM BUILD
+
+#testit {
+  position: fixed !important;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 87%;
+  z-index: 999999;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  transform: translate3d(-100%, 0px, 0px);
+}
+
+.actions {
+  li {
+    a {
+      background-color: $qt-charcoal;
+      color: white;
+      padding: $space-base $space-small !important;
+      border-bottom: 1px solid white;
+      -webkit-transition: background 300ms ease;
+      transition: background 300ms ease;
+      &:hover, &:focus {
+        background-color: $dark;
+      }
+      .qt-ico {
+        margin-right: $space-small;
+      }
+    }
+  }
+}
+
+.navigate {
+  min-height: 100%;
+  ul {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    //min-height: 100%;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+    li {
+      a {
+        position: relative;
+        -webkit-transition: background 300ms ease;
+        transition: background 300ms ease;
+        &:hover, &:focus {
+          background-color: $pale-medium;
+        }
+        &.backone {
+          background-color: $blue;
+          color: $dark;
+          .qt-ico {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            margin-right: $space-tiny;
+            color: $dark;
+            // border: 1px solid red;
+            vertical-align: middle;
+          }
+        }
+      }
+      a.hasSubnav:after {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        @include iconbase;
+        @include icon-chevron-down;
+        font-size: 1rem;
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+        color: $dark;
+      }
+      // &.fixit {
+      //   position: relative;
+      //   transform: translate3d(0, 0px, 0px);
+      //   a {
+      //     position: fixed !important;
+      //     top: 0;
+      //     left: 0;
+      //     width: 100%;
+      //     z-index: 999999;
+      //     border: 1px solid red;
+      //   }
+      // }
+      &.offcanvas-search {
+        fieldset {
+          padding: $space-small;
+          border: none;
+        }
+      }
+    }
+    &.push-left {
+      -webkit-transform: translate3d(-100%, 0px, 0px);
+      transform: translate3d(-100%, 0px, 0px);
+    }
+    &.active-menu {
+      //display: block;
+      z-index: 999999;
+      opacity: 1;
+    }
+  }
+  // SUB LEVEL ONLY
+  > ul {
+    > li {
+      //border: 1px solid red;
+      > a {
+        color: $dark;
+      }
+
+      // SUB LEVEL
+      ul {
+        //display: none;
+        //border: 1px solid blue;
+        opacity: 0;
+        background-color: #fff;
+        z-index: 999998;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "fd-gulp-starter",
+  "version": "0.0.1",
+  "description": "Foundation starter with Gulp",
+  "authors": [
+    "Ally C"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.4.7"
+  }
+}

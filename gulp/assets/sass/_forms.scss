@@ -1,0 +1,373 @@
+form .row {
+  .columns {
+    margin-bottom: 1rem;
+  }
+  &.form-cta {
+    margin-top: $space-base;
+  }
+}
+
+.testit {
+  position: fixed; top:0; left: 0; width: 100%;
+
+}
+
+::-webkit-input-placeholder { color: $base;  }
+::-moz-placeholder { color: $base; } /* firefox 19+ */
+:-ms-input-placeholder { color: $base; } /* ie */
+input:-moz-placeholder { color: $base; }
+
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea,
+select {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  background-color: $pale-light;
+  box-shadow: inset 0 1px 2px transparent;
+  color: $dark;
+  display: block;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  @include transition-border;
+  border: 4px solid $mid-light;
+  padding: $space-small;
+
+  &.qt-error {
+      border-color: $alert-color;
+      background-color: $white;
+  }
+  &:focus {
+    border-color: $focus-color;
+    background-color: $white;
+  }
+  @include breakpoint($small-screen-up) {
+    border-width: 3px;
+    // padding: $space-x-small;
+  }
+  @include breakpoint($medium-screen-up) {
+    border-width: 2px;
+    // padding: $space-small;
+  }
+}
+
+.qt-error-msg {
+  margin-top: 2px;
+  //margin-bottom: 20px;
+  position: relative;
+  padding: 8px 10px;
+  background-color: scale-color($alert-color, $lightness: 70%);
+  -webkit-border-radius: $global-radius;
+  -moz-border-radius: $global-radius;
+  border-radius: $global-radius;
+  &:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: scale-color($alert-color, $lightness: 70%) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -10px;
+    left: 33px;
+  }
+}
+
+textarea {
+    height: 120px !important;
+}
+
+
+select, select:not(:focus) {
+    background-image: url(../img/fa-chevron-down.png);
+    background-repeat: no-repeat;
+    background-position: top 6px right 5px;
+    background-size: 30px;
+}
+
+select:focus {
+    background-image: url(../img/fa-chevron-up.png);
+}
+
+
+// Increment number selector
+.qt-input-incrementor {
+    position: relative;
+    a {
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      color: #666;
+      padding: 0 4px;
+      text-align: center;
+      background-color: $pale-medium;
+      &:before {
+        display: inline-block;
+        margin-top: 3px;
+      }
+      &:focus {
+        // background-color: $focus-color;
+      }
+    }
+    .qt-input-icon-left {left: 6px;}
+    .qt-input-icon-right {right: 6px;}
+}
+
+
+// Radios and Checkboxes
+.form-radio-check {
+  position: relative;
+  display: block;
+  text-align: left;
+  background-color: $pale-medium;
+  padding: $space-small $space-base;
+  margin-bottom: $space-tiny;
+  @include breakpoint($small-screen-up) {
+    width: auto;
+    display: inline-block;
+    // margin-bottom: 0;
+  }
+  @include breakpoint($medium-screen-up) {
+    background-color: transparent;
+    padding-bottom: 0;
+    padding-left: $space-x-small;
+  }
+  input[type=checkbox],
+  input[type=radio] {
+    margin: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+  }
+  input[type=checkbox] + label,
+  input[type=radio] + label {
+    margin-left: $space-x-small;
+    font-size: 1rem;
+    &:after {
+      content: '';
+      position: absolute;
+      color: #fff;
+      top: 11px;
+      left: 11px;
+      background: white;
+      width: 22px;
+      height: 22px;
+      @include breakpoint($medium-screen-up) {
+        left: 0;
+      }
+    }
+  }
+  input[type="checkbox"] + label {
+    &:after {
+      border: 2px solid $mid-light;
+    }
+  }
+  input[type="checkbox"]:checked + label {
+    &:after {
+      @include iconbase;
+      @include icon-tick;
+      color: $dark;
+      font-size: 14px;
+    }
+  }
+  input[type="radio"] + label {
+    &:after {
+      @include circle;
+      border: 2px solid $mid-medium;
+      -webkit-box-shadow: inset 0 0 0 5px white;
+      box-shadow: inset 0 0 0 5px white;
+    }
+  }
+  input[type="radio"]:checked + label {
+    &:after {
+      background: $dark;
+    }
+  }
+}
+
+// Javascript select replacement
+.qt-dropdown {
+  position: relative;
+  .qt-dropdown-input {
+    position: relative;
+    cursor: pointer;
+    background-color: $pale-light;
+    input {
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      z-index: 2;
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+  .qt-ico {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    right: 6px;
+    top: 6px;
+    bottom: 6px;
+    padding: 0 8px;
+    background-color: $pale-medium;
+    text-align: center;
+    &:before {
+      @include transition-all;
+      display: inline-block;
+      margin-top: 9px;
+    }
+    @include breakpoint($medium-screen-up) {
+      padding: 0 6px;
+      &:before {
+        margin-top: 7px;
+      }
+    }
+  }
+  &.open {
+    .qt-dropdown-input {
+      background-color: white;
+      input {
+        border-color: $focus-color;
+      }
+      .qt-ico {
+        &:before {
+          @include upsidedown;
+        }
+      }
+    }
+  }
+  .qt-dropdown-scroll {
+    max-height: 226px;
+    overflow-y: scroll;
+  }
+  .qt-dropdown-content {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    visibility: hidden;
+    border: 4px solid $mid-light;
+    border-top: none;
+    @include breakpoint($medium-screen-up) {
+      border-width: 2px;
+    }
+    ul.qt-dropdown-links {
+      display: block;
+      margin: 0;
+      padding: 0;
+      li {
+        border-top: 1px solid $mid-light;
+        a {
+          color: $dark;
+          background-color: $pale-light;
+          @include transition-bg;
+          border-left: 3px solid $pale-light;
+          display: block;
+          padding: $space-small $space-x-small;
+          &:hover, &:focus {
+            background-color: white;
+            border-color: $focus-color;
+          }
+        }
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+  }
+  &.choose-location {
+    label {
+      position: absolute;
+      z-index: 999;
+      top: 13px; left: 12px;
+    }
+    .qt-dropdown-input {
+      input {
+        padding-left: $space-massive;
+      }
+    }
+  }
+}
+
+
+.qt-date-selection {
+  .qt-calendar-wrap {
+    position: relative;
+    background-color: $pale-light;
+    .qt-ico-calendar {
+      position: absolute;
+      z-index: 2;
+      display: block;
+      right: 6px;
+      top: 6px;
+      bottom: 6px;
+      padding: 0 5px;
+      text-align: center;
+      cursor: pointer;
+      &:before {
+        display: inline-block;
+        margin-top: 7px;
+      }
+    }
+    input {
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
+    }
+  }
+}
+
+@include breakpoint($small-screen-only) {
+  .qt-date-selection.both-ways {
+    .columns:first-child {
+      margin-bottom: 0 !important;
+      .qt-ico-calendar {
+        top: 30px;
+      }
+      .separate {
+        border-bottom: 3px solid $mid-light;
+        display: block;
+        // width: 100%;
+        position: absolute;
+        bottom: 0px;
+        right: 50px;
+        left: 10px;
+      }
+    }
+    .columns {
+      >label {
+        display: none;
+      }
+    }
+    .columns:last-child {
+      .qt-ico-calendar {
+        display: none;
+      }
+    }
+    #flightsDepartTextField {
+      border-bottom-width: 0px;
+    }
+    #flightsReturnTextField {
+      border-top-width: 0px;
+
+    }
+  }
+}

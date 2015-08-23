@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="en" >
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flights to Australia | Australia travel | Qantas</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css" />
+<script src="../assets/js/modernizr.js"></script>
+</head>
+
+<body>
+
+
+  <div class="row collapse qt-header hide-for-large-up">
+  <div class="columns small-6">
+      <a href="#" class="button"><i class="fa fa-bars"></i> Menu</a>
+  </div>
+  <div class="columns small-6">
+      <img src="../assets/img/logo-qantas.svg" class="qt-logo right">
+  </div>
+  <hr class="qt-margbot-0">
+  </div>
+
+  <div class="show-for-large-up">
+
+  <div class="row collapse qt-header">
+  <div class="columns large-4">
+      <img src="../assets/img/logo-qantas.svg" class="qt-logo">
+  </div>
+  <div class="columns large-8">
+      <ul class="inline-list right">
+          <li>Logged in as: <a href="#" class="qt-link">John Fysh</a></li>
+          <li>Location: <a href="#" class="qt-link">Australia</a></li>
+          <li><a href="#" class="qt-link">Help</a></li>
+          <li><a href="#" class="qt-link"><i class="fa fa-search"></i> Search</a></li>
+          <li><a href="#"><img src="../assets/img/logo-oneworld.png" class="qt-1world-sm"></a></li>
+      </ul>
+  </div>
+  </div>
+
+  <div class="qt-nav-wrapper">
+  <div class="row qt-nav">
+      <div class="columns">
+          <ul class="button-group qt-nav-list">
+              <li><a href="template-flight-offers-results1.html" class="button qt-flight"><i class="fa fa-plane"></i> Book a Trip</a></li>
+              <li><a href="" class="button qt-flight"><i class="fa fa-suitcase"></i> My Bookings</a></li>
+              <li><a href="" class="button">Travel Info <i class="fa fa-chevron-down"></i></a></li>
+              <li><a href="" class="button">Destinations <i class="fa fa-chevron-down"></i></a></li>
+              <li><a href="" class="button">Qantas Experience <i class="fa fa-chevron-down"></i></a></li>
+              <li><a href="" class="button">Frequent Flyer <i class="fa fa-chevron-down"></i></a></li>
+              <li><a href="" class="button">Qantas for Business <i class="fa fa-chevron-down"></i></a></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+
+  <!--
+  <div class="breadcrumbs-wrapper">
+  <div class="row collapse">
+      <div class="columns">
+      <ul class="breadcrumbs qt-margbot-0">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Book</a></li>
+          <li><a href="#">Flights</a></li>
+          <li class="current"><a href="#">Offers</a></li>
+      </ul>
+      </div>
+  </div>
+  </div>
+  -->
+
+  </div>
+
+
+<script src="../assets/js/app.js"></script>
+<script type="text/javascript">
+
+$('.qt-loader').hide();
+
+$('.flightOrigin').click(function(event){
+    event.preventDefault();
+    $('.qt-loader').show(0).delay(1000).hide(0);
+    $('.flightOriginInput').text($(this).text());
+})
+
+$('.flightDestination').click(function(event){
+    event.preventDefault();
+    $('.qt-loader').show(0).delay(1000).hide(0);
+    $('.flightDestinationInput').text($(this).text());
+})
+
+$('.qt-list-lowest').hide();
+
+$('.tab-lowest').click(function(event){
+    event.preventDefault();
+    $('.qt-loader').show(0).delay(1000).hide(0);
+    $('.qt-list-lowest').delay(1000).show(0);
+    $('.qt-list-sale').hide();
+    $(this).removeClass('secondary').addClass('qt-button-secondary-selected');
+    $('.tab-sale').removeClass('qt-button-secondary-selected').addClass('secondary');
+})
+
+$('.tab-sale').click(function(event){
+    event.preventDefault();
+    $('.qt-loader').show(0).delay(1000).hide(0);
+    $('.qt-list-sale').delay(1000).show(0);
+    $('.qt-list-lowest').hide();
+    $(this).removeClass('secondary').addClass('qt-button-secondary-selected');
+    $('.tab-lowest').removeClass('qt-button-secondary-selected').addClass('secondary');
+})
+
+</script>
+</body>
+</html>

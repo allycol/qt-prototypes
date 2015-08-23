@@ -1,0 +1,131 @@
+.qt-fillblanks {
+    background-color: rgba($primary-color, .9);
+    height: 100%;
+    //color: $white;
+    //h1, h2, h3, h4, a, small {color: $white;}
+    //h3.qt-form {line-height: 1.8}
+    h1.qt-hdr-underline {
+        margin-bottom: 30px;
+        .qt-underline {
+            background-color: $primary-color;
+        }
+    }
+    a.qt-blank {
+        border-bottom: dotted 1px $primary-color;
+        padding-bottom: 4px;
+        margin-right: 0.5rem;
+        .fa {
+          font-size: 0.75rem;
+          vertical-align: middle;
+        }
+    }
+}
+
+#dropOrigin, #dropDestination {
+    height: 310px;
+    overflow-y: auto;
+}
+
+.qt-filter-wrapper {
+    background-color: $snow;
+    border-bottom: solid 1px $gainsboro !important;
+    border-top: solid 1px $gainsboro !important;
+    padding: 1rem 0;
+    //border-bottom: solid 1px $secondary-button-bg-hover !important;
+    a.button.qt-tab {
+        letter-spacing: .001rem;
+        padding-top: 2.2167rem;
+        padding-bottom: 2.2167rem;
+        font-size: 1rem;
+        border-radius: 6px 6px 0px 0px;
+        border-left: solid 1px $secondary-button-bg-hover !important;
+        border-top: solid 1px $secondary-button-bg-hover !important;
+        border-right: solid 1px $secondary-button-bg-hover !important;
+        border-bottom: solid 1px $secondary-button-bg-hover !important;
+        background: linear-gradient($snow 80%, $smoke 100%);
+    }
+    a.button.qt-tab:hover {
+        background: linear-gradient($smoke 80%, $gainsboro 100%);
+    }
+    a.qt-button-secondary-selected,
+    a.qt-button-secondary-selected:link,
+    a.qt-button-secondary-selected:visited,
+    a.qt-button-secondary-selected:hover,
+    a.qt-button-secondary-selected:active {
+        background: $white !important;
+        border-bottom: solid 1px $white !important;
+        color: $oil;
+        font-weight: bold;
+    }
+    .qt-form-label {font-size: 0.875rem;}
+    label {
+      margin-bottom: $space-tiny;
+      display: inline-block;
+      strong {
+        color: #222;
+      }
+    }
+    ul.accordion {
+        margin-left: 0;
+        margin-bottom: 20px;
+        border: $input-border-width $input-border-color $input-border-style;
+    }
+}
+
+.qt-filter-wrapper-lg {
+    height: auto;
+}
+
+.qt-fillblanks {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: left;
+    background-size: auto 330px;
+}
+
+.qt-list-offers {
+  margin: $space-large 0;
+  .qt-card {
+    border: none;
+    border-radius: 0;
+    border-top: 3px solid $gainsboro;
+    box-shadow: none;
+    padding: $space-small 0 $space-small 0;
+    &:last-child {
+      border-bottom: 3px solid $gainsboro;
+    }
+    .qt-label {
+      margin-top: $space-x-small;
+      color: $orange;
+      border-color: $orange;
+    }
+    .days-left {
+      margin-bottom: $space-tiny;
+    }
+    .offer-type a {
+      text-transform: uppercase;
+      display: inline-block;
+      @include tiny-text;
+    }
+    .conditions {
+      margin-top: $space-tiny;
+      display: inline-block;
+      @include tiny-text;
+    }
+  }
+}
+
+.next-best-things {
+  margin-top: $space-massive;
+  h2 {
+    padding-bottom: $space-small;
+    margin-bottom: $space-medium;
+    border-bottom: 3px solid $gainsboro;
+  }
+  h3 {
+    margin: $space-small 0;
+  }
+  h4 {
+    margin: $space-tiny 0;
+  }
+}

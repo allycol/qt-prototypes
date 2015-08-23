@@ -1,0 +1,16 @@
+@include breakpoint($small-screen-up) {
+  #flight-booking {
+    //margin-top: -100px;
+    // background-color: red;
+    position: relative;
+    .row:first-child {
+      .go-there {
+        text-align: right;
+        padding-top: $space-base;
+      }
+    }
+    // .columns {
+    //   background-color: white;
+    // }
+  }
+}

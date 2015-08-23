@@ -1,0 +1,489 @@
+// VARIABLES
+
+//Colours
+$red: #e0001b;
+$dark-red: #c0001b;
+$darker-red: #a0001b;
+$fuschia: #e73695;
+$navy: #011e41;
+$aqua: #8de2e0;
+
+$white: #fff;
+$lightest-grey: #fafafa;
+$lighter-grey: #f5f5f5;
+$light-grey: #e5e5e5;
+$grey: #ddd;
+$dark-grey: #ccc;
+$darker-grey: #aaa;
+$darkerish-grey: #888;
+$darkest-grey: #666;
+
+$light-charcoal: #555;
+$faded-charcoal: #444;
+$charcoal: #222;
+$light-black: #333;
+$black: #000;
+
+// - General
+//$input-height-base: 42px;
+$padding-base-vertical: 10px;
+$padding-base-horizontal: 10px;
+
+$input-font-size: 16px;
+$input-font-size-small: 13px;
+
+$input-color: $charcoal;
+$input-bg: $white;
+$input-border: $dark-grey;
+$input-border-hover: $darker-grey;
+$input-border-focus: $darkest-grey;
+
+$input-color-placeholder: $darker-grey;
+$input-bg-disabled: $lighter-grey;
+
+$input-box-shadow: rgba(0,0,0,0.075);
+$input-box-shadow-focus: rgba(0,0,0,0.2);
+
+//Calendar
+//Calendar
+$calendar-width: 747px;
+$calendar-height: 360px;
+$calendar-gutter: 30px;
+$calendar-background: $white;
+$calendar-border-color: $grey;
+$calendar-arrow-font-size: 18px;
+$calendar-arrow-color: $dark-grey;
+$calendar-arrow-offset: 30px;
+$calendar-arrow-hover-color: $charcoal;
+$calendar-table-padding: 10px;
+$calendar-cell-disabled: $grey;
+$calendar-cell-highlight: $blue;
+$calendar-cell-selected-color: $white;
+
+// Arrow colours
+$calendar-arrow-font-size: 18px;
+$calendar-arrow-color: $dark-grey;
+$calendar-arrow-offset: 30px;
+$calendar-arrow-hover-color: $charcoal;
+
+//Calendar positions according to form elements
+$calendar-left-third-second: -84.3px;
+$calendar-left-third-third: -421.6px;
+$calendar-left-quarter-third: -253px;
+$calendar-left-quarter-fourth: -506px;
+$calendar-car-left: -178.6px;
+
+//jQuery UI Widgets
+$widget-background: $white;
+$widget-border-color: $blue;
+$widget-text-color: $charcoal;
+// $widget-hover-background: red;
+// $widget-section-background: red;
+$widget-arrow-offset: 20px;
+$widget-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+// $widget-menu-nav-height: 40px;
+// $widget-max-height: 340px;
+// $widget-menu-back-color: $darkest-grey;
+// $widget-menu-icon-color: $darker-grey;
+
+// MIXINS
+
+//opacity
+@mixin opacity($value){
+  $IEvalue: $value * 100;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEvalue+")";
+  filter: alpha(opacity=$IEvalue);
+  opacity: $value;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}
+
+@mixin widget-arrows() {
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: $widget-arrow-offset;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+
+    &:after {
+        top: -32px;
+        border-color: transparent transparent $widget-background transparent;
+        border-width: 18px;
+    }
+
+    &:before {
+        top: -36px;
+        border-color: transparent transparent $widget-border-color transparent;
+        border-width: 18px;
+    }
+}
+
+// Transitions
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-property($transition-property...) {
+  -webkit-transition-property: $transition-property;
+          transition-property: $transition-property;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration...) {
+  -webkit-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+@mixin transition-timing-function($timing-function) {
+  -webkit-transition-timing-function: $timing-function;
+          transition-timing-function: $timing-function;
+}
+
+@mixin transition-transform($transition...) {
+  -webkit-transition: -webkit-transform $transition;
+     -moz-transition: -moz-transform $transition;
+       -o-transition: -o-transform $transition;
+          transition: transform $transition;
+}
+
+
+// STLYES
+
+.calendarPage {
+  @include opacity(0);
+  @include box-shadow($widget-box-shadow);
+  // position: fixed;
+  // top: 0;
+  // width: $calendar-width;
+  //width: auto;
+  visibility: hidden;
+  width: 100%;
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  padding: 0;
+  @include widget-arrows;
+  z-index: 9999;
+  background: white repeat scroll 0 0;
+  border: 3px solid $blue;
+  @include breakpoint($small-screen-up) {
+    width: auto;
+  }
+  &.showcal {
+      @include opacity(1);
+      visibility: visible;
+      z-index: 999;
+  }
+  h3 {
+      padding-bottom: 15px;
+      margin: 15px 10px;
+      font-size: 1.5rem; // 24px
+      border-bottom: 1px solid $mid-light;
+  }
+  .close-popup {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 15px;
+    padding: 5px;
+    border: 1px solid $mid-light;
+    color: $mid-light;
+    @include circle;
+    &:hover, &:focus {
+      color: $dark;
+      border-color: $dark;
+    }
+    @include breakpoint($small-screen-up) {
+      display: none;
+    }
+  }
+  .dates-flexible {
+    margin: 10px;
+    @include breakpoint($small-screen-up) {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+  }
+}
+
+@include breakpoint($small-screen-up) {
+  #flightsReturnCalendarPage {
+    right: .625rem;
+    left: auto;
+    &:after, &:before {
+      left: auto;
+      right: 20px;
+    }
+  }
+}
+
+
+.cal_wrapper {
+    background: white none repeat scroll 0 0;
+    float: left;
+    height: $calendar-height;
+    overflow: hidden;
+    position: relative;
+    // margin: 0 10px 10px 10px;
+    //margin: 0 $calendar-gutter ($calendar-gutter - 10);
+    //width: $calendar-width - $calendar-gutter * 2;
+    // padding: 0 10px 10px 10px;
+    // width: 280px;
+
+    width: 100%;
+    z-index: 100001;
+    @include breakpoint($small-screen-up) {
+      width: 687px;
+      // margin: 0 30px 20px 30px;
+      // padding: 0;
+    }
+    @include breakpoint($medium-screen-up) {
+      width: 687px;
+      // margin: 0 30px 20px 30px;
+      // padding: 0;
+    }
+}
+
+.cal_contents {
+    position: relative;
+    @include transition-transform(0.3s ease-in-out);
+}
+
+.cal_nav,
+.cal_nav_rght {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+  a {
+    display: block;
+    background-color: $pale-medium;
+    color: #666;;
+    cursor: pointer;
+    font-size: $calendar-arrow-font-size;
+    padding: $space-tiny $space-small;
+    text-decoration: none;
+    &:hover {
+      color: $calendar-arrow-hover-color;
+    }
+  }
+  &.disabled {
+    a {
+      @include opacity(0);
+      cursor: default;
+    }
+  }
+}
+
+.cal_nav_rght {
+    left: auto;
+    right: 10px;
+}
+
+
+.calendarFields {
+    float: left;
+    display: inline;
+}
+
+/* Calendar */
+
+
+.no-icon .qa-icon_calendar {
+  @include opacity(0);
+}
+
+.visible {
+  display:block !important;
+}
+
+.calendarPage.showcal .cal_wrapper {
+//height: 276px !important;
+}
+
+/*calendarDiv*/
+
+.calendar.tableCalendar {
+  width: 100%;
+  float: left;
+  padding: 0 $calendar-table-padding;
+  position: absolute;
+  left: 0;
+  @include breakpoint($small-screen-up) {
+    width: 50%;
+  }
+}
+
+.title.head_title {
+    text-align: center;
+    margin: 10px 0 20px 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.tableTh,
+.tableTd {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: (100% / 7);
+}
+
+.tableTh {
+    font-size: 12px;
+}
+
+.table_head.tableTr {
+    padding: 6px 0;
+    font-size: 11px;
+    text-align: center;
+    margin-bottom: 1px;
+    border-bottom: 1px solid $mid-light;
+    border-top: 1px solid $mid-light;
+}
+
+.tableTd {
+    text-align: center;
+    vertical-align: middle;
+}
+.tableTd.activeDepart span.intdepDate,
+.tableTd.activeReturn.activeRetRange span.intdepDate,
+.tableTd.activeReturn span.intdepDate,
+.tableTd.active span.intdepDate, .tableTd.lastHover span.intdepDate{
+    background: $calendar-cell-highlight;
+    color: $calendar-cell-selected-color;
+    z-index: 3;
+}
+
+.tableTd.date span.intdepDate:hover,
+.selectedRange span:hover {
+    border-color: $calendar-cell-highlight !important;
+    color: $calendar-cell-highlight;
+}
+
+.tableTd.dateRangeHover span.intdepDate,
+.tableTd.dateRangeHover:hover span.intdepDate,
+.tableTd.dateRange:hover span.intdepDate,
+.tableTd.dateRange span.intdepDate {
+    background-color: #CDF1F0;
+    // background: red;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-color: #CDF1F0;
+    //color: #000;
+}
+
+.tableTd.date.lastHover.dateRangeHover span.intdepDate {
+    background: $calendar-cell-selected-color;
+    border-color: $calendar-cell-highlight;
+    color: $calendar-cell-highlight;
+}
+
+.intdepDate {
+    border: 1px solid transparent;
+    display: inline-block;
+    font-style: normal;
+    //height: 45px;
+    margin: 0;
+    text-align: center;
+    // line-height: 44px;
+    width: 100%;
+    padding: $space-small 0;
+    font-size: 14px;
+    @include transition(all 0.3s ease-in-out);
+}
+
+.days.tableCalendar {
+    display: table;
+    overflow: hidden;
+    width: 100%;
+}
+
+.tableTd.disabledCell {
+    color: $calendar-cell-disabled;
+}
+
+/*common*/
+
+.tableTd {
+    // height: 46px;
+}
+.tableTd.date.lastHover.dateRangeHover:before,
+.activeRetRange:before{
+    // width: 20px;
+}
+
+.tableTd.date.dateRangeHover,
+.tableTd.activeDepart,
+.tableTd.activeReturn,
+.tableTd.lastHover,
+.tableTd.date.dateRange,
+.selectedRange  {
+    //background: #f5eaea;
+    background-color: rgba($blue, 0.5);
+}
+
+.tableTd:hover {
+    cursor: pointer;
+}
+
+.tableTd.emptycell:hover,
+.tableTd.disabledCell:hover {
+    cursor: default;
+}
+
+.calendar.tableCalendar + .calendar.tableCalendar {
+    margin-left: 100%;
+    @include breakpoint($small-screen-up) {
+      margin-left: 50%;
+    }
+}
+
+.calendar.tableCalendar + .calendar.tableCalendar + .calendar.tableCalendar {
+    margin-left: 200%;
+    @include breakpoint($small-screen-up) {
+      margin-left: 100%;
+    }
+}
+.sliderWidth {
+    background:transparent !important;
+    width:1060px;
+    border: 1px solid $blue;
+}
+.noRange.calendarPage
+{
+    .selectedRange,.activeOther
+    {
+        background: white;
+    }
+}
+@mixin calendar-position($left-pos) {
+    .calendarPage {
+        left: $left-pos;
+        &:before,
+        &:after {
+            left: $calendar-arrow-offset - $left-pos;
+        }
+    }
+}
