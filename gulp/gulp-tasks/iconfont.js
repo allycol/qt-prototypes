@@ -8,7 +8,7 @@ module.exports = function (gulp, plugin, config) {
 	      fontHeight: 1001
 	    }))
 	    .on('codepoints', function(codepoints, options) {
-				console.log(codepoints);
+				// console.log(codepoints);
 	      gulp.src(config.paths.dev.iconCss + "/_icon.template.scss")
 	      .pipe(plugin.consolidate('lodash', {
 	          glyphs: codepoints,

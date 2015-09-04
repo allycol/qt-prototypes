@@ -10,6 +10,11 @@
 
 $small-screen-up: 40rem; // 640px
 $medium-screen-up: 64rem; // 1024px
+$large-screen-up: 70rem; // 1120px
+
+// For the nav
+
+$nav-custom-break: 48rem; // 768px
 
 // Restricted
 $small-screen-only: (width 0rem 40rem);
@@ -17,6 +22,7 @@ $small-screen-only: (width 0rem 40rem);
 
 // COLORS
 
+$qt-red: #F50000;
 $orange: #ED710B;
 $blue: #90E1DE;
 
@@ -159,6 +165,14 @@ $space-huge: 4rem;      // 64px
   -ms-transition: background 200ms ease-in;
   -o-transition: background 200ms ease-in;
   transition: background 200ms ease-in;
+}
+
+@mixin transition-height {
+  -webkit-transition: height 250ms ease-in-out;
+  -moz-transition: height 250ms ease-in-out;
+  -ms-transition: height 250ms ease-in-out;
+  -o-transition: height 250ms ease-in-out;
+  transition: height 250ms ease-in-out;
 }
 
 @mixin transition-border {

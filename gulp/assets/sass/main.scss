@@ -184,6 +184,397 @@ table {
     }
 }
 
+
+// NEW HEADER
+
+.fake-content {
+  height: 2000px;
+  background-color: #fff;
+  // border: 1px solid red;
+  position: relative;
+  z-index: 0;
+}
+
+.qt-masthead {
+
+  margin-bottom: 4rem;
+  border-top: 5px solid $dark;
+  @include breakpoint($medium-screen-up) {
+    border-top: none;
+  }
+
+  .qt-global-header {
+    background-color: $pale-medium;
+    padding: $space-base;
+    display: none;
+    @include breakpoint($medium-screen-up) {
+      display: block;
+    }
+  }
+
+  .row {
+    position: relative;
+  }
+
+  .qt-site-logo {
+    width: 125px;
+    margin: 10px 0 0 .625rem;
+    position: absolute;
+    z-index: 3;
+    top: 10px;
+    @include breakpoint($small-screen-up) {
+      width: 190px;
+    }
+    @include breakpoint($medium-screen-up) {
+      top: 75px;
+      margin-top: 0;
+    }
+  }
+
+  .one-world {
+    width: 50px;
+    height: 77px;
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    @include breakpoint($medium-screen-up) {
+      top: 57px;
+    }
+    a {
+      text-indent: -9999px;
+      display: block;
+      width: 35px; height: 35px;
+      background-image: url(../img/logo-oneworld.png);
+      background-size: cover;
+      margin: 22px 0 0 15px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    > li {
+      display: inline-flex;
+    }
+  }
+
+  .qt-content-nav {
+    position: relative;
+    top: 0;
+    z-index: 3;
+    background-color: transparent;
+
+    height: 0; // Hack to make functional nav clickable - otherwise this div covers it
+    overflow: visible;
+
+
+    @include breakpoint($medium-screen-up) {
+      width: 100%;
+      background-color: #323232;
+      height: 60px;
+    }
+
+    .qt-sticky-burger {
+      // Hamburger menu link
+      position: absolute;
+      top: 0;
+      right: 0;
+      //left: 0;
+      width: 60px;
+      height: 60px;
+      a {
+        display: block;
+        color: #fff;
+        border-left: none;
+        position: relative;
+        font-weight: bold;
+        padding: $space-base;
+        @include breakpoint($medium-screen-up) {
+          display: none;
+        }
+      }
+      &:before {
+        // The expanding red stripe
+        content: "";
+        position: absolute;
+        background-color: $qt-red;
+        width: 1000px;
+        position: absolute;
+        left: 0px;
+        bottom:0; top: 0;
+      }
+      @include breakpoint($medium-screen-up) {
+        left: 0;
+        right: auto;
+        &:before {
+          // The expanding red stripe
+          right: 0px;
+          left: auto;
+        }
+      }
+      @include breakpoint($large-screen-up) {
+        // width: 0px;
+        left: -60px;
+      }
+    }
+
+    ul {
+      // Content nav bar
+      display: none;
+      @include breakpoint($medium-screen-up) {
+        display: flex;
+        margin-left: 70px;
+      }
+      @include breakpoint($large-screen-up) {
+        margin-left: 10px;
+      }
+      a {
+        font-size: 0.95rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.8);
+        display: block;
+        padding: 1.25rem $space-small;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          margin-top: -0.4rem;
+          width: 1px; height: 0.75rem;
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+        &:hover, &:focus {
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+      li:last-child {
+        a {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sticky-wrapper {
+    position: relative;
+    background-color: #fff;
+    z-index: 2;
+    height: 78px !important;
+    &.is-sticky {
+      height: 60px !important;
+    }
+    // display: none;
+    // @include breakpoint($small-screen-up) {
+    //   display: block;
+    // }
+  }
+
+  .qt-functional-nav {
+    background-color: #fff;
+
+    @include breakpoint($medium-screen-up) {
+      border-bottom: 1px solid $mid-light;
+    }
+
+    .qt-sticky-plane {
+      // Hamburger menu link
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 60px;
+      width: 60px;
+      height: 60px;
+      background-color: $dark;
+      a {
+        display: block;
+        color: #fff;
+        border-left: none;
+        position: relative;
+        font-weight: bold;
+        padding: $space-base;
+      }
+      @include breakpoint($medium-screen-up) {
+        display: none;
+      }
+    }
+
+    .qt-mini-logo {
+      // Kangaroo logo
+      @include transition-all;
+      opacity: 0;
+      float: left;
+      position: relative;
+      margin-right: $space-small;
+      top: 20px;
+      height: 60px;
+      a {
+        position: relative;
+        border-right: none;
+        padding: 0 !important;
+        margin: 12px;
+        width: 30px;
+        display: block;
+      }
+      @include breakpoint($medium-screen-up) {
+        margin-left: 60px;
+      }
+      @include breakpoint($large-screen-up) {
+        margin-left: 0px;
+      }
+    }
+
+    .qt-functions {
+      position: relative;
+      margin: auto;
+      padding: $space-large 0 0 0;
+      height: 77px;
+      display: none;
+      @include transition-height;
+      @include breakpoint($medium-screen-up) {
+        margin-left: 220px;
+        display: flex;
+      }
+      li {
+        a {
+          display: block;
+          position: relative;
+          width: 100%;
+          text-align: center;
+          color: $dark;
+          font-weight: bold;
+          padding: 0 $space-medium;
+          // padding: $space-medium+0.25rem 0;
+          // border-right: 1px solid $mid-light;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            height: 16px;
+            width: 16px;
+            background-color: #f4f4f4;
+          }
+        }
+      }
+    }
+  }
+
+  // Overrdies for when menu is sticky
+  &.sticky-nav {
+
+    .qt-site-logo {
+      // Hide full size logo
+      opacity: 0;
+      display: none;
+    }
+
+    .qt-content-nav {
+      position: fixed;
+      top: 0;
+      z-index: 3;
+      width: 100%;
+      background-color: transparent;
+      height: 0; // Hack to make functional nav clickable - otherwise this div covers it
+      overflow: visible;
+
+      .qt-sticky-burger {
+        height: 60px;
+        a {
+          display: block !important;
+        }
+      }
+      ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: $dark;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        li {
+          display: block;
+          &:first-child {
+            a {
+              border-top: none !important;
+            }
+          }
+        }
+        a {
+          color: rgba(#fff, 0.8);
+          padding: $space-small;
+          display: block;
+          font-weight: normal;
+          border-top: 1px solid $mid-dark;
+          &:hover {
+            color: rgba(#fff, 1);
+          }
+        }
+      }
+    }
+
+    .qt-functional-nav {
+      border-bottom: none;
+      -webkit-box-shadow: 0 3px 0 0 rgba(0,0,0,0.1);
+      box-shadow: 0 3px 0 0 rgba(0,0,0,0.1);
+      .qt-mini-logo {
+        // Animate in the missing elements and make the bar narrower
+        opacity: 1;
+        display: inline-block;
+        top: 0px;
+      }
+      .qt-functions {
+        margin-left: 0px;
+        height: 60px;
+        padding-top: 1.25rem;
+      }
+    }
+
+  }
+}
+
+.qt-masthead {
+
+  .qt-functional-panels {
+    border: 1px solid red;
+    position: fixed;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(#fff, 0.9);
+    @include breakpoint($medium-screen-up) {
+      position: absolute;
+      top: auto;
+      height: auto;
+    }
+    .qt-functional-content {
+      // padding: $space-large;
+      display: none;
+    }
+  }
+
+  // Overrdies for when menu is sticky
+  &.sticky-nav {
+    .qt-functional-panels {
+      @include breakpoint($medium-screen-up) {
+        position: fixed;
+        top: 60px;;
+      }
+    }
+  }
+
+}
+
+
+
+
+// CONTENT PANELS
+
 .qt-content {
     padding-top: 3rem;
     padding-bottom: 3rem;

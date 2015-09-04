@@ -13,6 +13,31 @@ $(document).foundation({
 
 $(document).ready(function(){
 
+  $("#stickit").sticky().on('sticky-start', function() {
+    $('.qt-masthead').addClass('sticky-nav');
+    $('.qt-content-nav ul').hide();
+    // $('.qt-content-nav ul').appendTo('.qt-sticky-burger').hide();
+  }).on('sticky-end', function() {
+    // console.log("Started");
+    $('.qt-masthead').removeClass('sticky-nav');
+    $('.qt-content-nav ul').show();
+    // $('.qt-sticky-burger ul').appendTo('.qt-content-nav .row').show();
+  });
+
+  $('.qt-sticky-burger a').bind('click', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $(this).parent().next().slideToggle();
+  });
+
+  $('.qt-functions li a').bind('click', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var $listItemOrder = $(this).parent().index();
+    console.log($listItemOrder);
+    $('.qt-functional-panels .qt-functional-content').hide().eq($listItemOrder).show();
+  });
+
   var offCanvasPanel = $('#scotch-panel').scotchPanel({
     containerSelector: 'body', // Make this appear on the entire screen
     direction: 'left', // Make it toggle in from the left
