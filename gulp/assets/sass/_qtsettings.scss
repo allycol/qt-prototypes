@@ -10,7 +10,7 @@
 
 $small-screen-up: 40rem; // 640px
 $medium-screen-up: 64rem; // 1024px
-$large-screen-up: 70rem; // 1120px
+$large-screen-up: 80rem; // 1280px
 
 // For the nav
 
@@ -22,7 +22,10 @@ $small-screen-only: (width 0rem 40rem);
 
 // COLORS
 
-$qt-red: #F50000;
+$qt-red: #EE0000;
+$qt-red-medium: #C30000;
+$qt-red-darker: #870000;
+
 $orange: #ED710B;
 $blue: #90E1DE;
 
@@ -64,24 +67,24 @@ $space-huge: 4rem;      // 64px
 
 @mixin header1 {
   @include title-font;
-  font-size: 2.5rem; // 40px
+  font-size: 3rem; // 48px
   color: $dark;
   font-weight: normal;
   margin-top: 0;
 }
 
 @mixin header2 {
-  font-size: 1.875rem; // 30px
+  font-size: 2rem; // 32px
   font-weight: normal;
 }
 
 @mixin header3 {
-  font-size: 1rem; // 16px
+  font-size: 1.25rem; // 20px
   font-weight: normal;
 }
 
 @mixin header4 {
-  font-size: 0.875rem; // 14px
+  font-size: 1rem; // 16px
   font-weight: normal;
 }
 
@@ -97,6 +100,10 @@ $space-huge: 4rem;      // 64px
 @mixin link-base {
   color: $primary-color;
   text-decoration: none;
+}
+
+@mixin intro-text {
+  font-size: 1.5rem;
 }
 
 @mixin small-text {
@@ -135,6 +142,53 @@ $space-huge: 4rem;      // 64px
     color: $primary-color;
     text-transform: uppercase;
     font-size: 0.6875rem;
+}
+
+@mixin qt-button {
+  border-width: 2px;
+  border-style: solid;
+  @include transition-all;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  margin: 0;
+  font-size: 0.875rem;
+  outline: 0;
+  @include breakpoint($small-screen-up) {
+    margin: $space-medium 0 0 0;
+  }
+  &.primary {
+    background-color: $qt-red;
+    border-color: $qt-red;
+    color: #fff;
+    &:hover, &:focus {
+      background-color: $qt-red-medium;
+      border-color: $qt-red-medium;
+    }
+    &:active {
+      background-color: $qt-red-darker;
+      border-color: $qt-red-darker;
+    }
+  }
+  &.secondary {
+    background-color: white;
+    border-color: $qt-red;
+    color: $qt-red;
+    &:hover, &:focus {
+      background-color: white;
+      border-color: $qt-red-medium;
+      color: $qt-red-medium;
+    }
+    &:active {
+      background-color: white;
+      border-color: $qt-red-darker;
+      color: $qt-red-darker;
+    }
+  }
 }
 
 @mixin preserve-3d {

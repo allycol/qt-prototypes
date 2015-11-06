@@ -18,153 +18,208 @@
 
     <form>
 
-      <div class="row">
-          <div class="columns medium-6">
-              <label for="auto-comp">Input Text (Typeahead.js)</label>
-              <input type="text" id="auto-comp" placeholder="Type anything here..." class="awesomplete" data-list="Africa, Amsterdam, Argentina, Arubra, Asia, Australia" data-minchars="1" />
-          </div>
-          <div class="columns medium-6">
-              <label for="select-no-js">Select Box (non-js)</label>
-              <select id="select-no-js">
-                  <option>Choose one</option>
-                  <option value="">Africa</option>
-                  <option value="">Amsterdam</option>
-                  <option value="">Argentina</option>
-                  <option value="">Arubra</option>
-                  <option value="">Asia</option>
-                  <option value="">Australia</option>
-              </select>
-          </div>
-      </div>
+      <fieldset>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <div class="qt-dropdown">
-            <label for="select-js">Input Dropdown (js)</label>
-            <div class="qt-dropdown-input">
-              <input type="text" id="select-js" placeholder="Choose one" />
-              <span class="qt-ico qt-ico-s qt-ico-chevron-down"></span>
+        <h2>Text inputs</h2>
+
+        <div class="row">
+            <div class="columns medium-6">
+                <label for="auto-comp">Input Text (auto complete)</label>
+                <input type="text" id="auto-comp" placeholder="Type anything here..." class="awesomplete" data-list="Africa, Amsterdam, Argentina, Arubra, Asia, Australia" data-minchars="1" />
             </div>
-            <div class="qt-dropdown-content qt-dropdown-scroll">
-              <ul class="qt-dropdown-links">
-                <li><a href="#">Option 1</a></li>
-                <li><a href="#">Option 2</a></li>
-                <li><a href="#">Option 3</a></li>
-                <li><a href="#">Option 4</a></li>
-                <li><a href="#">Option 5</a></li>
-                <li><a href="#">Option 6</a></li>
-                <li><a href="#">Option 7</a></li>
-                <li><a href="#">Option 8</a></li>
-                <li><a href="#">Option 9</a></li>
-                <li><a href="#">Option 10</a></li>
-              </ul>
+        </div>
+
+        <div class="row">
+          <div class="columns medium-6">
+            <label for="auto-comp">Input Text</label>
+            <input type="text" placeholder="Placeholder..." data-minchars="1" />
+            <p class="qt-field-hint"><span class="qt-ico qt-ico-xs qt-ico-info"></span> <span class="copy">This is an example of a help text in context of what the user needs in order to complete the form.</span></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="columns medium-6">
+            <label>Input Text (Error)</label>
+            <input type="text" placeholder="" value="Something entered wrong" class="qt-error"/>
+            <div class="qt-error-msg">You need to fix this error message before you can continue.</div>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h2>Dropdowns</h2>
+
+        <div class="row">
+          <div class="columns medium-6">
+            <label for="select-js">Javascript dropdown</label>
+              <div class="qt-dropdown">
+                <div class="qt-dropdown-input">
+                  <input type="text" id="select-js" placeholder="Choose one" readonly />
+                  <span class="qt-ico qt-ico-s qt-ico-chevron-down"></span>
+                </div>
+                <div class="qt-dropdown-content qt-dropdown-scroll">
+                  <ul class="qt-dropdown-links">
+                    <li><a href="#">Option 1</a></li>
+                    <li><a href="#">Option 2</a></li>
+                    <li><a href="#">Option 3</a></li>
+                    <li><a href="#">Option 4</a></li>
+                    <li><a href="#">Option 5</a></li>
+                    <li><a href="#">Option 6</a></li>
+                    <li><a href="#">Option 7</a></li>
+                    <li><a href="#">Option 8</a></li>
+                    <li><a href="#">Option 9</a></li>
+                    <li><a href="#">Option 10</a></li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+          <div class="columns medium-6">
+            <label>Select</label>
+            <div class="qt-dropdown">
+              <div class="qt-dropdown-input">
+                <select>
+                    <option>Choose one</option>
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                    <option value="">Option 4</option>
+                    <option value="">Option 5</option>
+                    <option value="">Option 6</option>
+                    <option value="">Option 7</option>
+                    <option value="">Option 8</option>
+                    <option value="">Option 9</option>
+                    <option value="">Option 10</option>
+                </select>
+                <span class="qt-ico qt-ico-s qt-ico-chevron-down"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="columns medium-6">
-          <label>Select Box (non-js)</label>
-          <select>
-              <option>Choose one</option>
-              <option value="">Option 1</option>
-              <option value="">Option 2</option>
-              <option value="">Option 3</option>
-              <option value="">Option 4</option>
-              <option value="">Option 5</option>
-              <option value="">Option 6</option>
-              <option value="">Option 7</option>
-              <option value="">Option 8</option>
-              <option value="">Option 9</option>
-              <option value="">Option 10</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <label>Date Picker (Pikaday.js)</label>
-          <input type="text" class="qt-datepicker qt-fa qt-fa-calendar" placeholder="dd-mmm-yyyy"/>
-        </div>
-        <div class="columns medium-6">
-          <label>Input Date (non-js)</label>
-          <input type="date" placeholder="dd-mmm-yyyy"/>
-        </div>
-      </div>
+      </fieldset>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <label>Plus/Minus Incrementer</label>
-          <div class="qt-input-incrementor">
-            <input type="text" value="1" class="text-center" >
-            <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
-            <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
+      <fieldset>
+
+        <h2>Date selection</h2>
+
+        <div class="row">
+          <div class="columns medium-6">
+            <label>Date Picker (Pikaday.js)</label>
+            <div class="qt-date-selection">
+              <input type="text" class="qt-datepicker" placeholder="dd-mmm-yyyy"/>
+              <span class="qt-ico qt-ico-xs qt-ico-calendar"></span>
+            </div>
+          </div>
+          <div class="columns medium-6">
+            <label>Input Date (non-js)</label>
+            <div class="qt-date-selection">
+              <input type="date" placeholder="dd-mmm-yyyy"/>
+              <span class="qt-ico qt-ico-xs qt-ico-calendar"></span>
+            </div>
           </div>
         </div>
-        <div class="columns medium-6">
-          <label>Select Box (non-js)</label>
-          <select>
-            <option>Choose one</option>
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-          </select>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <div class="right">
-            <span data-tooltip aria-haspopup="true" class="has-tip" title="This is an example of a help text in context of what the user needs to supply in order for the form to."><i class="fa fa-info-circle qt-has-tooltip"></i></span>
-          </div>
-          <label>Input Text (Error)</label>
-          <input type="text" placeholder="Type anything here..." class="qt-error"/>
-          <div class="qt-error-msg">Error message</div>
-        </div>
-        <div class="columns medium-6">
-          <label for="textarea1">Textarea</label>
-          <textarea id="textarea1" placeholder="Type anything here..."></textarea>
-        </div>
-      </div>
+      </fieldset>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <h3>Radio Buttons</h3>
-          <div class="form-radio-check">
-            <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
+      <fieldset>
+
+        <h2>Number selection</h2>
+
+        <div class="row">
+          <div class="columns medium-3">
+            <label>Adults</label>
+            <div class="qt-input-incrementor">
+              <input type="text" value="1" class="text-center" readonly >
+              <span class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></span>
+              <span class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></span>
+            </div>
           </div>
-          <div class="form-radio-check">
-            <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Blue</label>
+          <div class="columns medium-3">
+            <label>Children (2-12 years)</label>
+            <div class="qt-input-incrementor">
+              <input type="text" value="1" class="text-center" readonly >
+              <span class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></span>
+              <span class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></span>
+            </div>
+          </div>
+          <div class="columns medium-3 end">
+            <label>Infants (up to 2 years)</label>
+            <div class="qt-input-incrementor">
+              <input type="text" value="1" class="text-center" readonly >
+              <span class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></span>
+              <span class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></span>
+            </div>
           </div>
         </div>
-        <div class="columns medium-6">
-          <!-- Blank -->
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="columns medium-6">
-          <h3>Checkboxes</h3>
-          <div class="form-radio-check">
-            <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+        <p class="qt-field-hint"><span class="qt-ico qt-ico-xs qt-ico-info"></span> <span class="copy">Children above the age of 12 should purchase an adult ticket. Infants are children under the age of 2. <br><a href="#">Find out how to book children travelling unaccompanied.</a></span></p>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h2>Free text</h2>
+
+        <div class="row">
+          <div class="columns medium-6">
+            <label for="textarea1">Textarea</label>
+            <textarea id="textarea1" placeholder="Type anything here..."></textarea>
           </div>
-          <div class="form-radio-check">
-            <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+
+        <h2>Radio buttons</h2>
+
+        <div class="row">
+          <div class="columns medium-12">
+            <h3>Select one</h3>
+            <div class="form-radio-check">
+              <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">This is one option</label>
+            </div>
+            <div class="form-radio-check">
+              <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">This is an other</label>
+            </div>
           </div>
         </div>
-        <div class="columns medium-6">
-          <!-- Blank -->
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="columns medium-6">
+      </fielset>
 
+      <fieldset>
+
+        <h2>Checkbox</h2>
+
+        <div class="row">
+          <div class="columns medium-12">
+            <div class="form-radio-check">
+              <input id="checkbox1" type="checkbox"><label for="checkbox1">Lorem ipsum dolor sit amet, <a href="#" target="_blank">Terms &amp; Conditions</a> consectetur adipiscing elit. Nulla facilisis nec turpis non tristique. Aenean imperdiet nisi nec neque ultrices hendrerit nec ullamcorper nulla.</label>
+            </div>
+          </div>
+          <div class="columns medium-6">
+            <!-- Blank -->
+          </div>
         </div>
-        <div class="columns medium-6">
-          <!-- Blank -->
+
+      </fieldset>
+
+      <fieldset>
+
+        <h2>Buttons</h2>
+
+        <div class="row">
+          <div class="columns medium-4">
+            <a href="#" class="qt-button primary">Call to action</a>
+          </div>
+          <div class="columns medium-4 end">
+            <a href="#" class="qt-button secondary">Call to action</a>
+          </div>
         </div>
-      </div>
+
+      </fielset>
 
     </form>
 

@@ -1,6 +1,8 @@
 var gulp = require('gulp');
-var gulpfontgen = require("gulp-fontgen");
+// var gulpfontgen = require("gulp-fontgen");
 var plugins = require('gulp-load-plugins')();
+// var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
 
 
 // Create a task wrapper for tasks in separate files
@@ -35,23 +37,48 @@ var config = {
 	}
 };
 
-gulp.task('sass', getTask('sass'));
 gulp.task('clean', getTask("clean"));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('iconbuild', getTask('iconfont'));
+
+// gulp.task('sass', function(){
+//   gulp.src(config.paths.dev.sass)
+// 		.pipe(plugins.sourcemaps.init("/sourcemap"))
+// 		// .pipe(plugins.notify("sass: <%= file.relative %>"))
+// 		.pipe(plugins.sass({
+// 			errLogToConsole: true,
+// 			includePaths: [config.paths.dev.foundation]
+// 		}))
+// 		//.pipe(plugins.autoprefixer())
+// 		.pipe(plugins.minifyCss())
+// 		.pipe(plugins.sourcemaps.write())
+// 		.pipe(gulp.dest(config.paths.dist.css))
+// 		.pipe(browserSync.stream());
+// });
+//
+// gulp.task('browserSync', ['sass'], function() {
+//     browserSync.init({
+//         proxy: "localhost/~qantasmacbook/qt-prototypes/build"
+//     });
+// });
+
 gulp.task('browserSync', getTask('browserSync'));
+gulp.task('sass', getTask('sass'));
 
-gulp.task('font', function(){
-	gulp.src(config.paths.dev.fonts)
-		.pipe(plugins.fontgen({
-			dest: config.paths.dist.fonts + "/"
-		}))
-		.pipe(gulp.dest(config.paths.dist.fonts))
-});
+// gulp.task('font', function(){
+// 	gulp.src(config.paths.dev.fonts)
+// 		.pipe(plugins.fontgen({
+// 			dest: config.paths.dist.fonts + "/"
+// 		}))
+// 		.pipe(gulp.dest(config.paths.dist.fonts))
+// });
 
-gulp.task('default', ['scripts', 'sass', 'font', 'iconbuild', 'browserSync'], function () {
+gulp.task('watch', function() {
 	gulp.watch(config.paths.dev.js, ['scripts']);
 	gulp.watch(config.paths.dev.sass, ['sass']);
-	gulp.watch(config.paths.dev.font, ['font']);
+	// gulp.watch(config.paths.dev.fonts, ['font']);
 	gulp.watch(config.paths.dev.iconFont, ['iconbuild']);
+	gulp.watch(config.paths.dist.pages).on('change', browserSync.reload);
 });
+
+gulp.task('default', ['scripts', 'sass', 'iconbuild', 'browserSync', 'watch']);

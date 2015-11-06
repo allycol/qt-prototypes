@@ -13,33 +13,34 @@ $(document).foundation({
 
 $(document).ready(function(){
 
-  $("#stickit").sticky().on('sticky-start', function() {
-    $('.qt-masthead').addClass('sticky-nav');
-    $('.qt-content-nav ul').hide();
-    // $('.qt-content-nav ul').appendTo('.qt-sticky-burger').hide();
-  }).on('sticky-end', function() {
-    // console.log("Started");
-    $('.qt-masthead').removeClass('sticky-nav');
-    $('.qt-content-nav ul').show();
-    // $('.qt-sticky-burger ul').appendTo('.qt-content-nav .row').show();
-  });
+  // $("#stickit").sticky().on('sticky-start', function() {
+  //   $('.qt-masthead').addClass('sticky-nav');
+  //   $('.qt-content-nav ul').hide();
+  //   // $('.qt-content-nav ul').appendTo('.qt-sticky-burger').hide();
+  // }).on('sticky-end', function() {
+  //   // console.log("Started");
+  //   $('.qt-masthead').removeClass('sticky-nav');
+  //   $('.qt-content-nav ul').show();
+  //   // $('.qt-sticky-burger ul').appendTo('.qt-content-nav .row').show();
+  // });
+  //
+  // $('.qt-sticky-burger a').bind('click', function(e){
+  //   e.preventDefault();
+  //   e.stopImmediatePropagation();
+  //   $(this).parent().next().slideToggle();
+  // });
+  //
+  // $('.qt-functions li a').bind('click', function(e){
+  //   e.preventDefault();
+  //   e.stopImmediatePropagation();
+  //   var $listItemOrder = $(this).parent().index();
+  //   console.log($listItemOrder);
+  //   $('.qt-functional-panels .qt-functional-content').hide().eq($listItemOrder).show();
+  // });
 
-  $('.qt-sticky-burger a').bind('click', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    $(this).parent().next().slideToggle();
-  });
-
-  $('.qt-functions li a').bind('click', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var $listItemOrder = $(this).parent().index();
-    console.log($listItemOrder);
-    $('.qt-functional-panels .qt-functional-content').hide().eq($listItemOrder).show();
-  });
 
   var offCanvasPanel = $('#scotch-panel').scotchPanel({
-    containerSelector: 'body', // Make this appear on the entire screen
+    containerSelector: '#site-wrapper', // Make this appear on the entire screen
     direction: 'left', // Make it toggle in from the left
     duration: 300, // Speed in ms how fast you want it to be
     transition: 'ease', // CSS3 transition type: linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier(P1x,P1y,P2x,P2y)
@@ -79,19 +80,17 @@ $(document).ready(function(){
 
     var actionsHeight = $('.actions').height();
 
-    var linkOffset = $link.offset();
-    $('.showpos').text(linkOffset.top);
+    // var linkOffset = $link.offset();
+    // $('.showpos').text(linkOffset.top);
 
     var $hasSubnav = $nextMenu.length;
 
     if($hasSubnav) {
+      // $parent.removeClass('active-menu'); // Show relevant menu
       $parent.addClass('push-left'); // Adds transform style
       $nextMenu.addClass('active-menu'); // Show relevant menu
-      //$siblings.hide();
-      // $('#scotch-panel').scrollTop(linkOffset.top);
-
-      // Can we do this only if next menu is longer??
-      $('#scotch-panel').scrollTop(actionsHeight);
+      $siblings.hide();
+      $('.navigate').scrollTop(actionsHeight);
     }
 
   });
@@ -153,10 +152,12 @@ $(document).ready(function(){
 
   // Number incrementor - used for people value
   $('.qt-input-incrementor .qt-input-icon-right').click(function( event ) {
-      event.preventDefault();
-      var oldval = parseInt($(this).parent().find("input").val());
+    event.preventDefault();
+    var oldval = parseInt($(this).parent().find("input").val());
+    if(oldval != 9){
       var newval = parseInt($(this).parent().find("input").val())+1;
       $(this).parent().find("input").val(newval);
+    }
   });
 
   $('.qt-input-incrementor .qt-input-icon-left').click(function( event ) {
@@ -168,7 +169,8 @@ $(document).ready(function(){
       }
   });
 
-  // Fancy looking select dropdown and used for auto-complete
+  // Fancy looking select dropdown
+
   $('.qt-dropdown').click(function(event){
     event.stopPropagation();
   });
@@ -196,11 +198,18 @@ $(document).ready(function(){
         }
   });
 
+  // var locationComplete = $("#location");
+  // // locationComplete.css("background", "red");
+  // new Awesomplete(locationComplete, {
+  // 	minchars: 4
+  // });
+
 });
 
 // RESPONSIVE TABLES
 
 $(document).ready(function() {
+
   var switched = false;
   var updateTables = function() {
     if (($(window).width() < 767) && !switched ){

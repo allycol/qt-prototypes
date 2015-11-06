@@ -1,21 +1,45 @@
 form .row {
+  position: relative;
   .columns {
     margin-bottom: 1rem;
   }
-  &.form-cta {
-    margin-top: $space-base;
+}
+
+
+.form-bg {
+  background-color: #fff;
+  height: 100%;
+  position: absolute;
+  @include breakpoint($small-screen-up) {
+    right: 2rem; left: 2rem;
+    top: -2rem;
+  }
+  @include breakpoint($medium-screen-up) {
+    right: 4rem; left: 4rem;
+    top: -2rem;
   }
 }
 
-.testit {
-  position: fixed; top:0; left: 0; width: 100%;
 
+fieldset {
+  border: none;
+  margin: $space-medium 0;
+  padding: 0;
+  @include breakpoint($small-screen-up) {
+    &.lift-up-over {
+      position: relative;
+      top: -3rem;
+    }
+  }
+  &>h2 {
+    margin-top: 0;
+  }
 }
 
-::-webkit-input-placeholder { color: $base;  }
-::-moz-placeholder { color: $base; } /* firefox 19+ */
-:-ms-input-placeholder { color: $base; } /* ie */
-input:-moz-placeholder { color: $base; }
+::-webkit-input-placeholder { color: $pale-darker;  }
+::-moz-placeholder { color: $pale-darker; } /* firefox 19+ */
+:-ms-input-placeholder { color: $pale-darker; } /* ie */
+input:-moz-placeholder { color: $pale-darker; }
 
 
 input[type="text"],
@@ -38,7 +62,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: 0;
-  background-color: $pale-light;
+  background-color: white;
   box-shadow: inset 0 1px 2px transparent;
   color: $dark;
   display: block;
@@ -47,9 +71,9 @@ select {
   width: 100%;
   box-sizing: border-box;
   @include transition-border;
-  border: 4px solid $mid-light;
+  border: 2px solid $mid-light;
   padding: $space-small;
-
+  margin-top: $space-tiny;
   &.qt-error {
       border-color: $alert-color;
       background-color: $white;
@@ -58,25 +82,18 @@ select {
     border-color: $focus-color;
     background-color: $white;
   }
-  @include breakpoint($small-screen-up) {
-    border-width: 3px;
-    // padding: $space-x-small;
-  }
-  @include breakpoint($medium-screen-up) {
-    border-width: 2px;
-    // padding: $space-small;
-  }
 }
 
 .qt-error-msg {
   margin-top: 2px;
-  //margin-bottom: 20px;
   position: relative;
-  padding: 8px 10px;
+  padding: 12px 15px;
   background-color: scale-color($alert-color, $lightness: 70%);
   -webkit-border-radius: $global-radius;
   -moz-border-radius: $global-radius;
   border-radius: $global-radius;
+  font-size: 0.875rem;
+  color: $dark;
   &:after {
     content: '';
     position: absolute;
@@ -91,40 +108,60 @@ select {
   }
 }
 
+.qt-field-hint {
+  font-size: 0.875rem;
+  margin: $space-x-small 0;
+  .qt-ico {
+    float: left;
+    color: $focus-color;
+  }
+  .copy {
+    margin-left: 24px;
+    display: block;
+    color: $mid-dark;
+  }
+}
+
 textarea {
     height: 120px !important;
 }
 
 
 select, select:not(:focus) {
-    background-image: url(../img/fa-chevron-down.png);
-    background-repeat: no-repeat;
-    background-position: top 6px right 5px;
-    background-size: 30px;
+
 }
 
 select:focus {
-    background-image: url(../img/fa-chevron-up.png);
+
 }
 
 
 // Increment number selector
 .qt-input-incrementor {
     position: relative;
-    a {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    span {
       position: absolute;
+      cursor: pointer;
       top: 6px;
       bottom: 6px;
       color: #666;
       padding: 0 4px;
       text-align: center;
-      background-color: $pale-medium;
+      // background-color: $pale-medium;
+      @include transition-all;
       &:before {
         display: inline-block;
         margin-top: 3px;
       }
-      &:focus {
+      &:hover, &:focus {
         // background-color: $focus-color;
+        color: $focus-color;
       }
     }
     .qt-input-icon-left {left: 6px;}
@@ -138,12 +175,11 @@ select:focus {
   display: block;
   text-align: left;
   background-color: $pale-medium;
-  padding: $space-small $space-base;
+  padding: $space-small $space-massive $space-small $space-base;
   margin-bottom: $space-tiny;
   @include breakpoint($small-screen-up) {
     width: auto;
     display: inline-block;
-    // margin-bottom: 0;
   }
   @include breakpoint($medium-screen-up) {
     background-color: transparent;
@@ -156,11 +192,15 @@ select:focus {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
+    position: absolute;
+    border: 1px solid red;
   }
   input[type=checkbox] + label,
   input[type=radio] + label {
-    margin-left: $space-x-small;
+    margin-left: $space-medium;
+    margin-bottom: 0;
     font-size: 1rem;
+    display: inline-block;
     &:after {
       content: '';
       position: absolute;
@@ -170,6 +210,7 @@ select:focus {
       background: white;
       width: 22px;
       height: 22px;
+      padding: 1px;
       @include breakpoint($medium-screen-up) {
         left: 0;
       }
@@ -185,7 +226,7 @@ select:focus {
       @include iconbase;
       @include icon-tick;
       color: $dark;
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   input[type="radio"] + label {
@@ -209,7 +250,7 @@ select:focus {
   .qt-dropdown-input {
     position: relative;
     cursor: pointer;
-    background-color: $pale-light;
+    background-color: white;
     input {
       position: relative;
       cursor: pointer;
@@ -224,23 +265,23 @@ select:focus {
     position: absolute;
     z-index: 1;
     display: block;
-    right: 6px;
-    top: 6px;
-    bottom: 6px;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
     padding: 0 8px;
-    background-color: $pale-medium;
+    // background-color: $pale-medium;
     text-align: center;
     &:before {
       @include transition-all;
       display: inline-block;
       margin-top: 9px;
     }
-    @include breakpoint($medium-screen-up) {
-      padding: 0 6px;
-      &:before {
-        margin-top: 7px;
-      }
-    }
+    // @include breakpoint($medium-screen-up) {
+    //   padding: 0 6px;
+    //   &:before {
+    //     margin-top: 7px;
+    //   }
+    // }
   }
   &.open {
     .qt-dropdown-input {
@@ -264,11 +305,11 @@ select:focus {
     z-index: 999;
     width: 100%;
     visibility: hidden;
-    border: 4px solid $mid-light;
+    border: 2px solid $mid-light;
     border-top: none;
-    @include breakpoint($medium-screen-up) {
-      border-width: 2px;
-    }
+    // @include breakpoint($medium-screen-up) {
+    //   border-width: 2px;
+    // }
     ul.qt-dropdown-links {
       display: block;
       margin: 0;
@@ -307,31 +348,32 @@ select:focus {
   }
 }
 
+.qt-button {
+  @include qt-button;
+}
 
 .qt-date-selection {
-  .qt-calendar-wrap {
+  position: relative;
+  .qt-ico-calendar {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    right: 8px;
+    top: 8px;
+    color: $qt-charcoal;
+    // bottom: 6px;
+    padding: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    &:before {
+      display: inline-block;
+      margin-top: 7px;
+    }
+  }
+  input {
     position: relative;
-    background-color: $pale-light;
-    .qt-ico-calendar {
-      position: absolute;
-      z-index: 2;
-      display: block;
-      right: 6px;
-      top: 6px;
-      bottom: 6px;
-      padding: 0 5px;
-      text-align: center;
-      cursor: pointer;
-      &:before {
-        display: inline-block;
-        margin-top: 7px;
-      }
-    }
-    input {
-      position: relative;
-      z-index: 1;
-      background-color: transparent;
-    }
+    z-index: 1;
+    background-color: transparent;
   }
 }
 

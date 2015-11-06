@@ -58,32 +58,41 @@ $icon-size: 32px;
 	@if $filename == chevron-up {
 		$char: "\E005";
 	}
-	@if $filename == cross {
+	@if $filename == close {
 		$char: "\E006";
 	}
-	@if $filename == hamburger {
+	@if $filename == cross {
 		$char: "\E007";
 	}
-	@if $filename == key {
+	@if $filename == hamburger {
 		$char: "\E008";
 	}
-	@if $filename == luggage {
+	@if $filename == info {
 		$char: "\E009";
 	}
-	@if $filename == minus {
+	@if $filename == key {
 		$char: "\E00A";
 	}
-	@if $filename == plane {
+	@if $filename == luggage {
 		$char: "\E00B";
 	}
-	@if $filename == plus {
+	@if $filename == minus {
 		$char: "\E00C";
 	}
-	@if $filename == tick {
+	@if $filename == plane {
 		$char: "\E00D";
 	}
-	@if $filename == user {
+	@if $filename == plus {
 		$char: "\E00E";
+	}
+	@if $filename == search {
+		$char: "\E00F";
+	}
+	@if $filename == tick {
+		$char: "\E010";
+	}
+	@if $filename == user {
+		$char: "\E011";
 	}
 
 	@return $char;
@@ -117,12 +126,20 @@ $icon-size: 32px;
 		content: icon-char(chevron-up);
 	}
 
+	@mixin icon-close{
+		content: icon-char(close);
+	}
+
 	@mixin icon-cross{
 		content: icon-char(cross);
 	}
 
 	@mixin icon-hamburger{
 		content: icon-char(hamburger);
+	}
+
+	@mixin icon-info{
+		content: icon-char(info);
 	}
 
 	@mixin icon-key{
@@ -143,6 +160,10 @@ $icon-size: 32px;
 
 	@mixin icon-plus{
 		content: icon-char(plus);
+	}
+
+	@mixin icon-search{
+		content: icon-char(search);
 	}
 
 	@mixin icon-tick{
@@ -170,11 +191,17 @@ $icon-size: 32px;
 .qt-ico-chevron-up {
 	@include icon(chevron-up);
 }
+.qt-ico-close {
+	@include icon(close);
+}
 .qt-ico-cross {
 	@include icon(cross);
 }
 .qt-ico-hamburger {
 	@include icon(hamburger);
+}
+.qt-ico-info {
+	@include icon(info);
 }
 .qt-ico-key {
 	@include icon(key);
@@ -190,6 +217,9 @@ $icon-size: 32px;
 }
 .qt-ico-plus {
 	@include icon(plus);
+}
+.qt-ico-search {
+	@include icon(search);
 }
 .qt-ico-tick {
 	@include icon(tick);

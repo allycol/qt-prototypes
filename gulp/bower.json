@@ -15,5 +15,8 @@
   ],
   "dependencies": {
     "foundation": "~5.4.7"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "breakpoint-sass#~2.6.1"
   }
 }

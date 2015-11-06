@@ -11,234 +11,306 @@
 
 <body>
 
-  <span class="overlay"></span>
+  <div id="site-wrapper">
 
-  <div id="scotch-panel">
+    <div class="overlay">
+      <span class="qt-ico qt-ico-s qt-ico-close"></span>
+    </div>
+    <div id="scotch-panel"></div>
 
-    <ul class="actions">
-      <li><a href="flights.html"><span class="qt-ico qt-ico-xs qt-ico-plane"></span>Book a flight</a></li>
-      <li><a href="manage.html"><span class="qt-ico qt-ico-xs qt-ico-user"></span>Manage your booking</a></li>
-      <li><a href="checkin.html"><span class="qt-ico qt-ico-xs qt-ico-luggage"></span>Check in</a></li>
-      <li><a href="status.html"><span class="qt-ico qt-ico-xs qt-ico-plane"></span>Flight status</a></li>
-      <li><a href="login.html"><span class="qt-ico qt-ico-xs qt-ico-key"></span>Log in</a></li>
-    </ul>
+    <!-- Page Content -->
+    <div class="row qt-mobile-header">
+      <div class="columns small-7">
+        <a href="#" class="toggle-panel"><span class="qt-ico qt-ico-s qt-ico-hamburger"></span> <span class="menu-txt">Menu</span></a>
+      </div>
+      <div class="columns small-5">
+        <div class="site-logo">
+          <picture>
+            <source type="image/svg+xml" srcset="../assets/img/logo-qantas.svg" />
+            <img src="../assets/img/logo-qantas.png" alt="Qantas" />
+          </picture>
+        </div>
+      </div>
+    </div>
+
+    <div class="page row">
+      <div class="columns qt-content">
+        <h1 class="qt-hdr-underline">Book a hotel<div class="qt-underline"></div></h1>
+
+        <!-- <img src="http://placehold.it/2000x768"> -->
+
+        <form id="hotel-booking">
+
+          <div class="row">
+            <div class="columns medium-12 large-8 large-offset-2">
+              <div class="qt-dropdown">
+                <label for="select-departure">Destination</label>
+                <div class="qt-dropdown-input">
+                  <input type="text" id="select-departure" value="Sydney" />
+                  <span class="qt-ico qt-ico-s qt-ico-chevron-down"></span>
+                </div>
+                <div class="qt-dropdown-content qt-dropdown-scroll">
+                  <ul class="qt-dropdown-links">
+                    <li><a href="#">Adelaide</a></li>
+                    <li><a href="#">Brisbane</a></li>
+                    <li><a href="#">Canberra</a></li>
+                    <li><a href="#">Darwin</a></li>
+                    <li><a href="#">Hobart</a></li>
+                    <li><a href="#">Melbourne</a></li>
+                    <li><a href="#">Sydney</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row qt-date-selection">
+            <div class="columns medium-6 large-4 large-offset-2">
+              <label for="depart-date">Check-in</label>
+              <!-- Overlay loads into next div -->
+              <div id="flightsDepart"></div>
+            </div>
+            <div class="columns medium-6 large-4 end return-date">
+              <label for="return-date">Check-out</label>
+              <!-- Overlay loads into next div -->
+              <div id="flightsReturn"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="columns small-6 medium-3 large-2 large-offset-2">
+              <label>Adults</label>
+              <div class="qt-input-incrementor">
+                <input type="text" value="1" class="text-center" >
+                <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
+                <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
+              </div>
+            </div>
+            <div class="columns small-6 medium-3 large-2">
+              <label>Children</label>
+              <div class="qt-input-incrementor">
+                <input type="text" value="0" class="text-center" >
+                <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
+                <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
+              </div>
+            </div>
+            <div class="columns small-6 medium-3 large-2 end">
+              <label>Infants</label>
+              <div class="qt-input-incrementor">
+                <input type="text" value="0" class="text-center" >
+                <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
+                <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row form-cta">
+            <div class="columns medium-4 medium-offset-8 large-4 large-offset-4">
+              <a href="#" class="button radius expand ">Search hotels</a>
+            </div>
+          </div>
+
+
+
+        </form>
+
+        <form method="post" name="flightMainform" id="flightMainform">
+            <input type="hidden" value=" " name="depAirports">
+            <input type="hidden" value=" " name="destAirports">
+            <input type="hidden" value=" " name="travelDates">
+            <input type="hidden" value=" " name="adults">
+            <input type="hidden" value=" " name="children">
+            <input type="hidden" value=" " name="infants">
+            <input type="hidden" value=" " name="searchOption" id="searchOption">
+            <input type="hidden" value=" " name="tripType" id="tripType">
+            <input type="hidden" value=" " name="travelClass">
+            <input type="hidden" value=" " name="PAGE_FROM">
+            <input type="hidden" value=" " name="localeOverride">
+            <input type="hidden" value=" " name="ruleSetId">
+            <input type="hidden" value=" " name="mloginffNumber">
+            <input type="hidden" value=" " name="mloginsurname">
+            <input type="hidden" value=" " name="mloginpin">
+            <input type="hidden" value=" " name="isHome">
+            <input type="hidden" value=" " name="bookingMsg">
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="fixed-panel">
+
+    <div class="search">
+      <input type="search" placeholder="Search" />
+      <span class="qt-ico qt-ico-s qt-ico-search"></span>
+      <input type="button" />
+    </div>
 
     <div class="navigate">
+      <div class="ff-details">
+        <a id="details-name" href="#">Mr A COLQUHOUN (6196214)</a>
+        <span id="details-tier">Bronze Frequent Flyer</span>
+        <span id="details-points">36,603 points</span>
+        <div class="row collapse">
+          <div class="columns small-6">
+            <a class="details-account" href="#">My account</a>
+          </div>
+          <div class="columns small-6">
+            <a class="details-logout" href="#">Logout</a>
+          </div>
+        </div>
+      </div>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Flight offers</a></li>
-        <li><a href="#">Booking</a>
-          <ul class="subnav">
-            <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Main menu</a></li>
-            <li><span class="title">Booking</span></li>
-            <li><a href="#">Flights</a></li>
-            <li><a href="#">Hotels</a></li>
-            <li><a href="#">Cars</a></li>
-            <li><a href="#">Cruises</a></li>
-            <li><a href="#">Restaurants</a></li>
-            <li><a href="#">Activites</a></li>
-            <li><a href="#">Transfers</a></li>
-            <li><a href="#">Travel insurance</a></li>
-            <li><a href="#">Gift vouchers</a></li>
-          </ul>
-        </li>
+        <li class="active"><a href="index.html">Home</a></li>
         <li><a href="#">Destinations</a>
           <ul class="subnav">
-            <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Main menu</a></li>
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
             <li><span class="title">Destinations</span></li>
-            <li><a href="#">Australia</a>
-              <ul class="subnav">
-                <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Destinations</a></li>
-                <li><span class="title">Australia</span></li>
-                <li><a href="#">Australian Capital Territory</a></li>
-                <li><a href="#">New South Wales</a></li>
-                <li><a href="#">Northern Territory</a></li>
-                <li><a href="#">Queensland</a></li>
-                <li><a href="#">South Australia</a></li>
-                <li><a href="#">Tasmania</a></li>
-                <li><a href="#">Victoria</a></li>
-                <li><a href="#">Western Australia</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Australia</a></li>
             <li><a href="#">Africa</a></li>
             <li><a href="#">Asia</a>  </li>
             <li><a href="#">Europe</a>  </li>
             <li><a href="#">Middle East</a></li>
             <li><a href="#">NZ &amp; South Pacific</a></li>
-            <li><a href="#">Americas</a>
-              <ul class="subnav">
-                <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Destinations</a></li>
-                <li><span class="title">Americas</span></li>
-                <li><a href="#">South America</a></li>
-                <li><a href="#">Central America</a></li>
-                <li><a href="#">Canada</a></li>
-                <li><a href="#">USA</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Top Ten Destinations</a></li>
+            <li><a href="#">Americas</a></li>
+            <li><a href="#">Timetable</a></li>
+            <li><a href="#">Route Map</a></li>
+            <li><a href="#">Our Network</a></li>
+            <li><a href="#">Featured</a></li>
             <li><a href="#">Travel Insider Guides</a></li>
-            <li><a href="#">Get inspired</a></li>
-            <li><a href="#">Where we fly</a>
-              <ul class="subnav">
-                <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Destinations</a></li>
-                <li><span class="title">Flight routes</span></li>
-                <li><a href="#">Timetables</a></li>
-                <li><a href="#">Route maps</a></li>
-                <li><a href="#">Our network</a></li>
+            <li><a href="#">Popular</a>
+              <ul>
+                <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+                <li><span class="title">Popular</span></li>
+                <li><a href="#">London</a></li>
+                <li><a href="#">Dubai</a></li>
+                <li><a href="#">Top 10</a></li>
+                <li><a href="#">Inspiration</a></li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#">Plan your trip</a>
+        <li><a href="#">Plan</a>
           <ul class="subnav">
-            <li><a href="#" class="backone"><span class="qt-ico qt-ico-tiny qt-ico-chevrondown"></span> Main menu</a></li>
-            <li><span class="title">Plan your trip</span></li>
-            <li><a href="#">Baggage</a></li>
-            <li><a href="#">Travel classes</a></li>
-            <li><a href="#">Specific needs</a></li>
-            <li><a href="#">Travel advice</a></li>
-            <li><a href="#">Airport facilities</a></li>
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Plan</span></li>
+            <li><a href="#">Flight Offers</a></li>
+            <li><a href="#">Why Qantas</a></li>
+            <li><a href="#">Travel Advice</a></li>
+            <li><a href="#">Gift &amp; Travel Products</a></li>
+            <li><a href="#">Popular</a>
+              <ul>
+                <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+                <li><span class="title">Popular</span></li>
+                <li><a href="#">Travel checklist</a></li>
+                <li><a href="#">US Visa Requirements</a></li>
+                <li><a href="#">First time flyers</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-        <li><a href="#">Frequent Flyer</a></li>
-        <li><a href="#">Qantas for Business</a></li>
-        <li class="offcanvas-search">
-          <fieldset>
-            <input type="search" placeholder="Search" />
-          </fieldset>
+        <li><a href="#">Book</a>
+          <ul class="subnav">
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Book</span></li>
+            <li><a href="#">Flights</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Travel Insurance</a></li>
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Ski Packages</a></li>
+            <li><a href="#">Gift Vouchers</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Cruises</a></li>
+            <li><a href="#">Packages</a></li>
+            <li><a href="#">Transfers</a></li>
+            <li><a href="#">Box Office USA</a></li>
+            <li><a href="#">Manage your booking</a></li>
+            <li><a href="#">Popular</a>
+              <ul>
+                <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+                <li><span class="title">Popular</span></li>
+                <li><a href="#">Change Flights</a></li>
+                <li><a href="#">Multi-city</a></li>
+                <li><a href="#">Group Bookings</a></li>
+                <li><a href="#">Payment Options</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Fly</a>
+          <ul class="subnav">
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Fly</span></li>
+            <li><a href="#">Flight Status</a></li>
+            <li><a href="#">Travel Updates</a></li>
+            <li><a href="#">Baggage</a></li>
+            <li><a href="#">Specific Needs</a></li>
+            <li><a href="#">Family Travel</a></li>
+            <li><a href="#">Seat Selection</a></li>
+            <li><a href="#">Check in</a></li>
+            <li><a href="#">At the Airport</a></li>
+            <li><a href="#">Travel Classes</a></li>
+            <li><a href="#">Onboard</a></li>
+            <li><a href="#">Popular</a>
+              <ul>
+                <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+                <li><span class="title">Popular</span></li>
+                <li><a href="#">Airport Lounges</a></li>
+                <li><a href="#">Additional Baggage</a></li>
+                <li><a href="#">Carry on Bags</a></li>
+                <li><a href="#">Seat Maps</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Frequent Flyer</a>
+          <ul class="subnav">
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Frequent Flyer</span></li>
+            <li><a href="#">Discover and Join</a></li>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="#">Partner Airlines</a></li>
+            <li><a href="#">Member Specials</a></li>
+            <li><a href="#">Qantas Points and Partners</a></li>
+            <li><a href="#">The Qantas Club</a></li>
+            <li><a href="#">Log in</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Qantas for Business</a>
+          <ul class="subnav">
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Qantas for Business</span></li>
+            <li><a href="#">Qantas Business Direct</a></li>
+            <li><a href="#">Business Rewards Program</a></li>
+            <li><a href="#">Payment Solutions</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Help</a>
+          <ul class="subnav">
+            <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+            <li><span class="title">Help</span></li>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Essential Accessibility</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Popular</a>
+              <ul>
+                <li><a href="#" class="backone"><span class="qt-ico qt-ico-s qt-ico-chevron-left"></span></a></li>
+                <li><span class="title">Popular</span></li>
+                <li><a href="#">How to check in from your mobile</a></li>
+              </ul>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
 
   </div>
 
-  <!-- Page Content -->
-  <div class="row qt-mobile-header">
-    <div class="columns small-7">
-      <a href="#" class="toggle-panel"><span class="qt-ico qt-ico-s qt-ico-hamburger"></span> <span class="menu-txt">Menu</span></a>
-    </div>
-    <div class="columns small-5">
-      <div class="site-logo">
-        <picture>
-          <source type="image/svg+xml" srcset="../assets/img/logo-qantas.svg" />
-          <img src="../assets/img/logo-qantas.png" alt="Qantas" />
-        </picture>
-      </div>
-    </div>
-  </div>
-
-  <div class="page row">
-    <div class="columns qt-content">
-      <h1 class="qt-hdr-underline">Book a hotel<div class="qt-underline"></div></h1>
-
-      <!-- <img src="http://placehold.it/2000x768"> -->
-
-      <form id="hotel-booking">
-
-        <div class="row">
-          <div class="columns medium-12 large-8 large-offset-2">
-            <div class="qt-dropdown">
-              <label for="select-departure">Destination</label>
-              <div class="qt-dropdown-input">
-                <input type="text" id="select-departure" value="Sydney" />
-                <span class="qt-ico qt-ico-s qt-ico-chevron-down"></span>
-              </div>
-              <div class="qt-dropdown-content qt-dropdown-scroll">
-                <ul class="qt-dropdown-links">
-                  <li><a href="#">Adelaide</a></li>
-                  <li><a href="#">Brisbane</a></li>
-                  <li><a href="#">Canberra</a></li>
-                  <li><a href="#">Darwin</a></li>
-                  <li><a href="#">Hobart</a></li>
-                  <li><a href="#">Melbourne</a></li>
-                  <li><a href="#">Sydney</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row qt-date-selection">
-          <div class="columns medium-6 large-4 large-offset-2">
-            <label for="depart-date">Check-in</label>
-            <!-- Overlay loads into next div -->
-            <div id="flightsDepart"></div>
-          </div>
-          <div class="columns medium-6 large-4 end return-date">
-            <label for="return-date">Check-out</label>
-            <!-- Overlay loads into next div -->
-            <div id="flightsReturn"></div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="columns small-6 medium-3 large-2 large-offset-2">
-            <label>Adults</label>
-            <div class="qt-input-incrementor">
-              <input type="text" value="1" class="text-center" >
-              <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
-              <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
-            </div>
-          </div>
-          <div class="columns small-6 medium-3 large-2">
-            <label>Children</label>
-            <div class="qt-input-incrementor">
-              <input type="text" value="0" class="text-center" >
-              <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
-              <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
-            </div>
-          </div>
-          <div class="columns small-6 medium-3 large-2 end">
-            <label>Infants</label>
-            <div class="qt-input-incrementor">
-              <input type="text" value="0" class="text-center" >
-              <a href="" class="qt-ico qt-ico-m qt-ico-minus qt-input-icon-left"></a>
-              <a href="" class="qt-ico qt-ico-m qt-ico-plus qt-input-icon-right"></a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row form-cta">
-          <div class="columns medium-4 medium-offset-8 large-4 large-offset-4">
-            <a href="#" class="button radius expand ">Search hotels</a>
-          </div>
-        </div>
-
-
-
-      </form>
-
-      <form method="post" name="flightMainform" id="flightMainform">
-          <input type="hidden" value=" " name="depAirports">
-          <input type="hidden" value=" " name="destAirports">
-          <input type="hidden" value=" " name="travelDates">
-          <input type="hidden" value=" " name="adults">
-          <input type="hidden" value=" " name="children">
-          <input type="hidden" value=" " name="infants">
-          <input type="hidden" value=" " name="searchOption" id="searchOption">
-          <input type="hidden" value=" " name="tripType" id="tripType">
-          <input type="hidden" value=" " name="travelClass">
-          <input type="hidden" value=" " name="PAGE_FROM">
-          <input type="hidden" value=" " name="localeOverride">
-          <input type="hidden" value=" " name="ruleSetId">
-          <input type="hidden" value=" " name="mloginffNumber">
-          <input type="hidden" value=" " name="mloginsurname">
-          <input type="hidden" value=" " name="mloginpin">
-          <input type="hidden" value=" " name="isHome">
-          <input type="hidden" value=" " name="bookingMsg">
-      </form>
-
-    </div>
-  </div>
-
 
 <script src="../assets/js/app.js"></script>
-
-<script src="http://www.qantas.com.au/js/aceHomePage/date_v10.js" type="text/javascript"></script>
-<script src="http://www.qantas.com.au/js/date/date_en_AU.js" type="text/javascript"></script>
-<script src="../assets/js/calendar.js" type="text/javascript"></script>
-<script src="../assets/js/logic.js" type="text/javascript"></script>
 
 </body>
 </html>

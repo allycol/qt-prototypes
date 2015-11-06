@@ -1,23 +1,6 @@
 
 // See qtsettings.scss for includes
 
-h1 {
-  @include header1;
-}
-
-h1.qt-hdr-underline {
-  position: relative;
-  padding: 0 0 10px 0;
-  .qt-underline {
-      position: absolute;
-      bottom: 0;
-      width: 30px;
-      height: 4px;
-      border-radius: 2px;
-      background-color: $primary-color;
-  }
-}
-
 body {
   line-height: normal;
 }
@@ -37,6 +20,23 @@ ul.button-group {
 h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: #222;
+}
+
+h1 {
+  @include header1;
+}
+
+h1.qt-hdr-underline {
+  position: relative;
+  padding: 0 0 10px 0;
+  .qt-underline {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $primary-color;
+  }
 }
 
 h2 {
@@ -59,6 +59,14 @@ p a {
   text-decoration: underline;
 }
 
+// HEADER GROUPS - Need to start using these!
+
+hgroup {
+  p {
+    @include intro-text;
+  }
+}
+
 // Red links, arrow bullets
 .go-there {
   padding: 0;
@@ -68,7 +76,7 @@ p a {
     margin: 0;
     padding: 0 0 0 $space-small;
     display: inline-block;
-    font-size: 0.875rem; // 14px 
+    font-size: 0.875rem; // 14px
     &:first-child {
       padding-left: 0;
     }
